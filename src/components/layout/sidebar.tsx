@@ -12,7 +12,7 @@ import {
   Users,
   Bot,
   Package,
-  User,
+  Contact
 } from 'lucide-react';
 import {
   Sidebar,
@@ -32,8 +32,8 @@ const navItems = [
   { href: '/grades', label: 'Grades', icon: GraduationCap },
   { href: '/announcements', label: 'Announcements', icon: Megaphone },
   { href: '/messages', label: 'Messages', icon: MessageSquare },
-  { href: '/contacts', label: 'Contacts', icon: Users },
-  { href: '/students', label: 'Students', icon: User },
+  { href: '/contacts', label: 'Contacts', icon: Contact },
+  { href: '/users', label: 'Users', icon: Users, adminOnly: true },
 ];
 
 const AppSidebar = () => {
@@ -43,6 +43,8 @@ const AppSidebar = () => {
   if (!user) {
     return null;
   }
+  
+  const visibleNavItems = navItems.filter(item => !item.adminOnly || user.role === 'Admin');
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">
@@ -59,11 +61,11 @@ const AppSidebar = () => {
       <Separator />
       <SidebarContent className="p-2">
         <SidebarMenu>
-          {navItems.map((item) => (
+          {visibleNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === item.href}
+                isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')}
                 tooltip={item.label}
               >
                 <Link href={item.href}>

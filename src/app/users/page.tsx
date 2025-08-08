@@ -16,27 +16,28 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { students } from "@/lib/placeholder-data";
+import { users } from "@/lib/placeholder-data";
+import { Badge } from "@/components/ui/badge";
 
-export default function StudentsPage() {
+export default function UsersPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Students</h1>
-          <p className="text-muted-foreground">Manage student information.</p>
+          <h1 className="text-3xl font-bold">User Management</h1>
+          <p className="text-muted-foreground">Manage all users in the system.</p>
         </div>
         <Button asChild>
-          <Link href="/students/add">
-            <PlusCircle className="mr-2 h-4 w-4" /> Add Student
+          <Link href="/users/add">
+            <PlusCircle className="mr-2 h-4 w-4" /> Add User
           </Link>
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Student List</CardTitle>
-          <CardDescription>A list of all students in the system.</CardDescription>
+          <CardTitle>User List</CardTitle>
+          <CardDescription>A list of all users in the system.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -44,16 +45,18 @@ export default function StudentsPage() {
               <TableRow>
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Major</TableHead>
+                <TableHead>Role</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {students.map((student) => (
-                <TableRow key={student.id}>
-                  <TableCell className="font-medium">{student.name}</TableCell>
-                  <TableCell>{student.email}</TableCell>
-                  <TableCell>{student.major}</TableCell>
+              {users.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell className="font-medium">{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>
+                    <Badge variant={user.role === 'Admin' ? 'destructive' : 'secondary'}>{user.role}</Badge>
+                  </TableCell>
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -64,10 +67,10 @@ export default function StudentsPage() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem asChild>
-                           <Link href={`/students/${student.id}`}><Eye className="mr-2 h-4 w-4" />View Details</Link>
+                           <Link href={`/users/${user.id}`}><Eye className="mr-2 h-4 w-4" />View Details</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                           <Link href={`/students/${student.id}/edit`}><Edit className="mr-2 h-4 w-4" />Edit</Link>
+                           <Link href={`/users/${user.id}/edit`}><Edit className="mr-2 h-4 w-4" />Edit</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem className="text-destructive">
                            <Trash2 className="mr-2 h-4 w-4" />Delete

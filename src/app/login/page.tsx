@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from '@/contexts/auth-context';
 import { Package } from 'lucide-react';
+import { users } from '@/lib/placeholder-data'; // We'll use this for mock auth
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,12 +19,14 @@ export default function LoginPage() {
   const { login } = useAuth();
 
   const handleLogin = () => {
-    if (email && password) {
-      // In a real app, you'd validate against a server
-      login({ name: 'Jane Doe', email });
+    // In a real app, you'd validate against a server
+    const foundUser = users.find(u => u.email === email);
+
+    if (foundUser && password) { // Dummy password check
+      login(foundUser);
       router.replace('/');
     } else {
-      setError('Please enter both email and password.');
+      setError('Invalid email or password.');
     }
   };
 

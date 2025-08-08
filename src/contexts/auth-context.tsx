@@ -3,15 +3,11 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-
-interface AuthUser {
-  name: string;
-  email: string;
-}
+import type { User } from '@/types';
 
 interface AuthContextType {
-  user: AuthUser | null;
-  login: (user: AuthUser) => void;
+  user: User | null;
+  login: (user: User) => void;
   logout: () => void;
   isLoading: boolean;
 }
@@ -19,7 +15,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
@@ -44,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [user, isLoading, pathname, router]);
 
 
-  const login = (userData: AuthUser) => {
+  const login = (userData: User) => {
     localStorage.setItem('campus-hub-user', JSON.stringify(userData));
     setUser(userData);
   };

@@ -21,7 +21,7 @@ export type Announcement = {
 
 export type MessageContact = {
   id: number;
-  name: string;
+  name:string;
   avatar: string;
   lastMessage: string;
   lastMessageTime: string;
@@ -43,9 +43,12 @@ export type DepartmentContact = {
   office: string;
 };
 
-export type Student = {
+export type UserRole = 'Admin' | 'Teacher' | 'Student';
+
+export type User = {
     id: string;
     name: string;
     email: string;
-    major: string;
+    role: UserRole;
+    major?: string; // Optional, as it may not apply to all roles
 };
