@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useActionState, useRef, useEffect } from 'react';
@@ -45,8 +46,8 @@ export default function ChatInterface() {
       <CardContent className="flex flex-col flex-1 p-0">
         <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
           <div className="space-y-6">
-            {state.messages.map((message, index) => (
-              <div key={index} className={`flex items-start gap-4 ${message.role === 'user' ? 'justify-end' : ''}`}>
+            {state.messages.map((message) => (
+              <div key={message.id} className={`flex items-start gap-4 ${message.role === 'user' ? 'justify-end' : ''}`}>
                  {message.role === 'assistant' && (
                   <Avatar className="h-8 w-8 border">
                     <AvatarFallback><Bot className="h-5 w-5"/></AvatarFallback>

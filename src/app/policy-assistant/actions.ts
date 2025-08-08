@@ -1,3 +1,4 @@
+
 'use server';
 
 import { z } from 'zod';
@@ -24,8 +25,6 @@ export async function askQuestion(
   prevState: AIState,
   formData: FormData,
 ): Promise<AIState> {
-  const anId = Date.now().toString();
-
   const validatedFields = AskQuestionSchema.safeParse({
     question: formData.get('question'),
   });
@@ -35,7 +34,7 @@ export async function askQuestion(
       messages: [
         ...prevState.messages,
         {
-          id: anId,
+          id: Date.now().toString(),
           role: 'assistant',
           content: 'Please enter a valid question.',
         },
@@ -45,25 +44,38 @@ export async function askQuestion(
 
   const { question } = validatedFields.data;
 
+  const userMessage = {
+    id: Date.now().toString(),
+    role: 'user' as const,
+    content: question,
+  };
+
   try {
     const response = await policyQA({ question });
+    const assistantMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant' as const,
+        content: response.answer,
+    };
     return {
       messages: [
         ...prevState.messages,
-        { id: anId, role: 'user', content: question },
-        { id: anId + 1, role: 'assistant', content: response.answer },
+        userMessage,
+        assistantMessage,
       ],
     };
   } catch (error) {
     console.error(error);
+    const errorMessage = {
+        id: Date.now().toString(),
+        role: 'assistant' as const,
+        content: 'Sorry, I encountered an error. Please try again.',
+    };
     return {
       messages: [
         ...prevState.messages,
-        {
-          id: anId,
-          role: 'assistant',
-          content: 'Sorry, I encountered an error. Please try again.',
-        },
+        userMessage,
+        errorMessage,
       ],
     };
   }
