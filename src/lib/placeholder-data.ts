@@ -1,4 +1,4 @@
-import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact } from '@/types';
+import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, Student } from '@/types';
 
 export const courses: Course[] = [
   {
@@ -121,4 +121,25 @@ export const departments: DepartmentContact[] = [
     phone: '(123) 456-7893',
     office: 'Library, First Floor',
   },
+];
+
+export const students: Student[] = [
+    {
+        id: '1',
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        major: 'Computer Science'
+    },
+    {
+        id: '2',
+        name: 'Jane Smith',
+        email: 'jane.smith@example.com',
+        major: 'History'
+    },
+    {
+        id: '3',
+        name: 'Peter Jones',
+        email: 'peter.jones@example.com',
+        major: 'Mathematics'
+    }
 ];
