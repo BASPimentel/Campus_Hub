@@ -52,15 +52,16 @@ const AppSidebar = () => {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} legacyBehavior passHref>
-                <SidebarMenuButton
-                  isActive={pathname === item.href}
-                  tooltip={item.label}
-                >
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === item.href}
+                tooltip={item.label}
+              >
+                <Link href={item.href}>
                   <item.icon />
                   <span>{item.label}</span>
-                </SidebarMenuButton>
-              </Link>
+                </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
@@ -69,16 +70,17 @@ const AppSidebar = () => {
          <Separator className="my-2"/>
          <SidebarMenu>
             <SidebarMenuItem>
-                <Link href="/policy-assistant" legacyBehavior passHref>
-                    <SidebarMenuButton
-                        className="bg-primary/10 hover:bg-primary/20 text-primary-foreground"
-                        isActive={pathname === '/policy-assistant'}
-                        tooltip="AI Policy Assistant"
-                    >
-                        <Bot />
-                        <span>AI Assistant</span>
-                    </SidebarMenuButton>
+              <SidebarMenuButton
+                  asChild
+                  className="bg-primary/10 hover:bg-primary/20 text-primary-foreground"
+                  isActive={pathname === '/policy-assistant'}
+                  tooltip="AI Policy Assistant"
+              >
+                <Link href="/policy-assistant">
+                  <Bot />
+                  <span>AI Assistant</span>
                 </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
          </SidebarMenu>
       </SidebarFooter>
