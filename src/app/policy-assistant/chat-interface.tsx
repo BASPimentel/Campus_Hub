@@ -33,13 +33,13 @@ export default function ChatInterface() {
         });
     }
   }, [state.messages]);
+  
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  }, [state.messages]);
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formAction(formData);
-    formRef.current?.reset();
-  };
 
   return (
     <Card className="flex flex-col flex-1">
@@ -66,7 +66,7 @@ export default function ChatInterface() {
           </div>
         </ScrollArea>
         <div className="border-t p-4 bg-card">
-          <form ref={formRef} onSubmit={handleFormSubmit} className="flex items-center gap-2">
+          <form ref={formRef} action={formAction} className="flex items-center gap-2">
             <Input
               name="question"
               placeholder="e.g., What is the policy on late submissions?"
