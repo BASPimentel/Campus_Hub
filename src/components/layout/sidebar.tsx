@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -23,6 +24,7 @@ import {
   SidebarFooter,
 } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
+import { useAuth } from '@/contexts/auth-context';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -36,6 +38,11 @@ const navItems = [
 
 const AppSidebar = () => {
   const pathname = usePathname();
+  const { user } = useAuth();
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">

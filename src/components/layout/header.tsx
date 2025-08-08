@@ -1,6 +1,7 @@
+
 'use client';
 
-import { Search, Bell } from 'lucide-react';
+import { Search, Bell, LogOut } from 'lucide-react';
 import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
@@ -15,8 +16,13 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useAuth } from '@/contexts/auth-context';
 
 const AppHeader = () => {
+  const { user, logout } = useAuth();
+
+  const userInitial = user?.name.split(' ').map(n => n[0]).join('') || 'U';
+
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-card px-4 md:px-6">
        <SidebarTrigger className="md:hidden" />
@@ -39,8 +45,8 @@ const AppHeader = () => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full">
               <Avatar className="h-8 w-8">
-                 <AvatarImage src="https://placehold.co/40x40.png" alt="@student" data-ai-hint="student avatar" />
-                <AvatarFallback>JD</AvatarFallback>
+                 <AvatarImage src={`https://placehold.co/40x40.png?text=${userInitial}`} alt={user?.name || ''} data-ai-hint="student avatar" />
+                <AvatarFallback>{userInitial}</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -50,7 +56,10 @@ const AppHeader = () => {
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={logout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Logout</span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
