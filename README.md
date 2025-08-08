@@ -1,5 +1,7 @@
-# Firebase Studio
+# Campus Hub
 
-This is a NextJS starter in Firebase Studio.
+This is a Next.js application for a school system called Campus Hub.
 
-To get started, take a look at src/app/page.tsx.
+It includes features like course listings, grade overviews, an AI policy assistant, announcements, messaging, and a contact directory.
+
+To get started, run `npm run dev` and open http://localhost:9002 in your browser.
