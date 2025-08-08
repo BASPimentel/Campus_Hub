@@ -1,8 +1,18 @@
+
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { courses } from "@/lib/placeholder-data";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function CoursesPage() {
+  const router = useRouter();
+
+  const handleViewDetails = (courseId: number) => {
+    router.push(`/courses/${courseId}`);
+  };
+
   return (
     <div className="space-y-6">
         <div>
@@ -21,7 +31,7 @@ export default function CoursesPage() {
               <p className="mt-2 text-sm">{course.description}</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full">View Details</Button>
+              <Button className="w-full" onClick={() => handleViewDetails(course.id)}>View Details</Button>
             </CardFooter>
           </Card>
         ))}
