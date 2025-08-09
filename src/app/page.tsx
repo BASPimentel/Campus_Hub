@@ -49,7 +49,7 @@ export default function DashboardPage() {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
         {visibleNavItems.map((item) => (
-          <Link href={item.href} key={item.href}>
+          <Link href={item.href} key={item.label}>
             <Card className="hover:bg-primary/5 hover:shadow-lg transition-all duration-200 h-full flex flex-col items-center justify-center text-center p-4">
               <CardHeader className="p-2">
                 <div className="bg-primary/10 p-4 rounded-full mx-auto">
