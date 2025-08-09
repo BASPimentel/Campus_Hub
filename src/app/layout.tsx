@@ -30,8 +30,15 @@ function AppContent({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (!user || pathname === '/login') {
+  // If we are on the login page, just render the children
+  if (pathname === '/login') {
     return <>{children}</>;
+  }
+
+  // If we are not on the login page and there is no user, we show nothing,
+  // because the AuthProvider will redirect.
+  if (!user) {
+    return null;
   }
   
   return (
