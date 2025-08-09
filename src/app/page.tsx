@@ -20,21 +20,18 @@ import { useAuth } from '@/contexts/auth-context';
 
 const navItems = [
   { href: '/courses', label: 'Courses', icon: BookOpen },
-  { href: '/grades', label: 'Grade Book', icon: GraduationCap },
-  { href: '/announcements', label: 'Notice Board', icon: Megaphone },
-  { href: '/messages', label: 'Live Chat', icon: MessageSquare },
+  { href: '/grades', label: 'Grades', icon: GraduationCap },
+  { href: '/announcements', label: 'Announcements', icon: Megaphone },
+  { href: '/messages', label: 'Messages', icon: MessageSquare },
   { href: '/contacts', label: 'Contacts', icon: Contact },
-  { href: '/users', label: 'Students', icon: Users, adminOnly: true },
-  { href: '/academics', label: 'Campus', icon: School, adminOnly: true },
-  { href: '/policy-assistant', label: 'AI Assistant', icon: Bot },
-  { href: '#', label: 'KPI Dashboard', icon: LayoutDashboard },
-  { href: '#', label: 'Calendar', icon: Calendar },
-  { href: '#', label: 'Expenses', icon: Wallet },
+  { href: '/users', label: 'Users', icon: Users, adminOnly: true },
+  { href: '/academics', label: 'Academics', icon: School, adminOnly: true },
+  { href: '/policy-assistant', label: 'AI Policy Assistant', icon: Bot },
 ];
 
 export default function DashboardPage() {
   const { user } = useAuth();
-  
+
   if (!user) {
     return null;
   }
@@ -45,19 +42,21 @@ export default function DashboardPage() {
     <div className="space-y-6">
        <div>
         <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back, {user.name}! Navigate to any section from here.</p>
+        <p className="text-muted-foreground">Welcome back, {user.name}! Here's a quick overview of your school portal.</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {visibleNavItems.map((item) => (
           <Link href={item.href} key={item.label}>
-            <Card className="hover:bg-primary/5 hover:shadow-lg transition-all duration-200 h-full flex flex-col items-center justify-center text-center p-4">
-              <CardHeader className="p-2">
-                <div className="bg-primary/10 p-4 rounded-full mx-auto">
-                    <item.icon className="w-8 h-8 text-primary" />
-                </div>
+            <Card className="hover:bg-muted/50 transition-colors">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">{item.label}</CardTitle>
+                <item.icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
-              <CardContent className="p-2">
-                <CardTitle className="text-base font-semibold">{item.label}</CardTitle>
+              <CardContent>
+                <div className="text-2xl font-bold">...</div>
+                 <p className="text-xs text-muted-foreground">
+                  Manage {item.label.toLowerCase()}
+                </p>
               </CardContent>
             </Card>
           </Link>
