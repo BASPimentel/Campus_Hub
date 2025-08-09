@@ -1,5 +1,5 @@
 
-import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject, AcademicYear, Student } from '@/types';
+import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject, AcademicYear, Student, AttendanceRecord } from '@/types';
 
 export const courses: Course[] = [
   {
@@ -171,6 +171,18 @@ export const students: Student[] = [
         guardianPhone: '444-555-6666',
         classId: 'G9-B'
     },
+     {
+        id: '5',
+        name: 'Michael Brown',
+        email: 'michael.brown@example.com',
+        role: 'Student',
+        major: 'History',
+        dateOfBirth: '2005-11-30',
+        address: '789 Main St, Learnington, LG 54321',
+        guardianName: 'David Brown',
+        guardianPhone: '777-888-9999',
+        classId: 'G10-A'
+    },
 ];
 
 users.push(...students.filter(s => !users.some(u => u.id === s.id)));
@@ -204,4 +216,15 @@ export let academicYears: AcademicYear[] = [
             { id: 't4', name: 'Spring 2025', startDate: '2025-01-10', endDate: '2025-06-15' },
         ]
     }
+];
+
+export const classes = [
+    { id: 'G10-A', name: 'Grade 10 - Section A' },
+    { id: 'G9-B', name: 'Grade 9 - Section B' }
+];
+
+export const attendanceRecords: AttendanceRecord[] = [
+    { studentId: '1', studentName: 'John Doe', classId: 'G10-A', date: '2024-10-26', status: 'present' },
+    { studentId: '5', studentName: 'Michael Brown', classId: 'G10-A', date: '2024-10-26', status: 'absent' },
+    { studentId: '4', studentName: 'Emily White', classId: 'G9-B', date: '2024-10-26', status: 'present' },
 ];

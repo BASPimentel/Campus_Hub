@@ -13,7 +13,8 @@ import {
   Bot,
   Package,
   Contact,
-  School
+  School,
+  CalendarCheck
 } from 'lucide-react';
 import {
   Sidebar,
@@ -26,16 +27,23 @@ import {
 } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/contexts/auth-context';
+import type { UserRole } from '@/types';
 
-const navItems = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/courses', label: 'Courses', icon: BookOpen },
-  { href: '/grades', label: 'Grades', icon: GraduationCap },
-  { href: '/announcements', label: 'Announcements', icon: Megaphone },
-  { href: '/messages', label: 'Messages', icon: MessageSquare },
-  { href: '/contacts', label: 'Contacts', icon: Contact },
-  { href: '/students', label: 'Students', icon: Users, adminOnly: true },
-  { href: '/academics', label: 'Academics', icon: School, adminOnly: true },
+const navItems: {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+  roles: UserRole[];
+}[] = [
+  { href: '/', label: 'Dashboard', icon: LayoutDashboard, roles: ['Admin', 'Teacher', 'Student'] },
+  { href: '/courses', label: 'Courses', icon: BookOpen, roles: ['Admin', 'Teacher', 'Student'] },
+  { href: '/grades', label: 'Grades', icon: GraduationCap, roles: ['Student'] },
+  { href: '/announcements', label: 'Announcements', icon: Megaphone, roles: ['Admin', 'Teacher', 'Student'] },
+  { href: '/messages', label: 'Messages', icon: MessageSquare, roles: ['Admin', 'Teacher', 'Student'] },
+  { href: '/contacts', label: 'Contacts', icon: Contact, roles: ['Admin', 'Teacher', 'Student'] },
+  { href: '/students', label: 'Students', icon: Users, roles: ['Admin'] },
+  { href: '/academics', label: 'Academics', icon: School, roles: ['Admin'] },
+  { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
 ];
 
 const AppSidebar = () => {
@@ -46,7 +54,7 @@ const AppSidebar = () => {
     return null;
   }
   
-  const visibleNavItems = navItems.filter(item => !item.adminOnly || user.role === 'Admin');
+  const visibleNavItems = navItems.filter(item => item.roles.includes(user.role));
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">

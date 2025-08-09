@@ -13,20 +13,28 @@ import {
   School,
   LayoutDashboard,
   Calendar,
-  Wallet
+  Wallet,
+  CalendarCheck
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/auth-context';
+import type { UserRole } from '@/types';
 
-const navItems = [
-  { href: '/courses', label: 'Courses', icon: BookOpen },
-  { href: '/grades', label: 'Grades', icon: GraduationCap },
-  { href: '/announcements', label: 'Announcements', icon: Megaphone },
-  { href: '/messages', label: 'Messages', icon: MessageSquare },
-  { href: '/contacts', label: 'Contacts', icon: Contact },
-  { href: '/students', label: 'Students', icon: Users, adminOnly: true },
-  { href: '/academics', label: 'Academics', icon: School, adminOnly: true },
-  { href: '/policy-assistant', label: 'AI Policy Assistant', icon: Bot },
+const navItems: {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+  roles: UserRole[];
+}[] = [
+  { href: '/courses', label: 'Courses', icon: BookOpen, roles: ['Student', 'Teacher', 'Admin'] },
+  { href: '/grades', label: 'Grades', icon: GraduationCap, roles: ['Student'] },
+  { href: '/announcements', label: 'Announcements', icon: Megaphone, roles: ['Student', 'Teacher', 'Admin'] },
+  { href: '/messages', label: 'Messages', icon: MessageSquare, roles: ['Student', 'Teacher', 'Admin'] },
+  { href: '/contacts', label: 'Contacts', icon: Contact, roles: ['Student', 'Teacher', 'Admin'] },
+  { href: '/students', label: 'Students', icon: Users, roles: ['Admin'] },
+  { href: '/academics', label: 'Academics', icon: School, roles: ['Admin'] },
+  { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
+  { href: '/policy-assistant', label: 'AI Policy Assistant', icon: Bot, roles: ['Student', 'Teacher', 'Admin'] },
 ];
 
 export default function DashboardPage() {
@@ -36,7 +44,7 @@ export default function DashboardPage() {
     return null;
   }
 
-  const visibleNavItems = navItems.filter(item => !item.adminOnly || user.role === 'Admin');
+  const visibleNavItems = navItems.filter(item => item.roles.includes(user.role));
 
   return (
     <div className="space-y-6">

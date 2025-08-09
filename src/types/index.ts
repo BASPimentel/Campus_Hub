@@ -1,4 +1,5 @@
 
+
 export type Course = {
   id: number;
   name: string;
@@ -86,3 +87,12 @@ export type AcademicYear = {
   terms: Term[];
 };
 
+export type AttendanceStatus = 'present' | 'absent' | 'late';
+
+export type AttendanceRecord = {
+    studentId: string;
+    studentName: string;
+    classId: string;
+    date: string;
+    status: AttendanceStatus;
+};
