@@ -1,6 +1,3 @@
-
-'use client'
-import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { students, fees as allFees, payments as allPayments } from "@/lib/placeholder-data";
 import { Button } from "@/components/ui/button";
