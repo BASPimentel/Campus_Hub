@@ -16,7 +16,7 @@ import {
   School,
   CalendarCheck,
   BookMarked,
-  Wallet
+  Wallet,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -30,6 +30,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/contexts/auth-context';
 import type { UserRole } from '@/types';
+import { Badge } from '../ui/badge';
 
 const navItems: {
   href: string;
@@ -48,6 +49,7 @@ const navItems: {
   { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
   { href: '/gradebook', label: 'Gradebook', icon: BookMarked, roles: ['Admin', 'Teacher'] },
   { href: '/fees', label: 'Fees', icon: Wallet, roles: ['Admin'] },
+  { href: '/policy-assistant', label: 'AI Assistant', icon: Bot, roles: ['Admin', 'Teacher', 'Student'] },
 ];
 
 const AppSidebar = () => {
@@ -65,7 +67,7 @@ const AppSidebar = () => {
       <SidebarHeader className="p-4">
         <Link href="/" className="flex items-center gap-2">
           <div className="bg-primary rounded-lg p-2 text-primary-foreground">
-            <Package className="h-6 w-6" />
+            <GraduationCap className="h-6 w-6" />
           </div>
           <span className="font-bold text-lg text-sidebar-foreground group-data-[collapsible=icon]:hidden">
             Campus Hub
@@ -85,30 +87,15 @@ const AppSidebar = () => {
                 <Link href={item.href}>
                   <item.icon />
                   <span>{item.label}</span>
+                   {item.label === 'AI Assistant' && (
+                    <Badge variant="secondary" className="ml-auto group-data-[collapsible=icon]:hidden">Beta</Badge>
+                  )}
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="p-2">
-         <Separator className="my-2"/>
-         <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                  asChild
-                  className="bg-primary/10 hover:bg-primary/20 text-primary-foreground"
-                  isActive={pathname === '/policy-assistant'}
-                  tooltip="AI Policy Assistant"
-              >
-                <Link href="/policy-assistant">
-                  <Bot />
-                  <span>AI Assistant</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-         </SidebarMenu>
-      </SidebarFooter>
     </Sidebar>
   );
 };

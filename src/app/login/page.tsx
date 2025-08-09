@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from '@/contexts/auth-context';
-import { Package } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { users } from '@/lib/placeholder-data'; // We'll use this for mock auth
 
 export default function LoginPage() {
@@ -33,13 +33,16 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <div className="w-full max-w-md space-y-6">
-         <div className="flex items-center justify-center gap-2">
-          <div className="bg-primary rounded-lg p-3 text-primary-foreground">
-            <Package className="h-8 w-8" />
+         <div className="flex flex-col items-center justify-center gap-4 text-center">
+          <div className="bg-primary rounded-lg p-4 text-primary-foreground">
+            <GraduationCap className="h-10 w-10" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground">
-            Campus Hub
-          </h1>
+          <div className='space-y-1'>
+            <h1 className="text-3xl font-bold text-foreground">
+              Campus Hub
+            </h1>
+            <p className="text-muted-foreground">Your central hub for school life.</p>
+          </div>
         </div>
         <Card>
           <CardHeader>
