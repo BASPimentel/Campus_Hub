@@ -1,5 +1,6 @@
 
 
+
 export type Course = {
   id: number;
   name: string;
@@ -9,6 +10,7 @@ export type Course = {
 };
 
 export type Grade = {
+  studentId?: string;
   course: string;
   grade: string;
   attendance: string;

@@ -33,10 +33,14 @@ export const courses: Course[] = [
 ];
 
 export const grades: Grade[] = [
-  { course: 'Intro to CS', grade: '92', attendance: '98%' },
-  { course: 'World History', grade: '88', attendance: '95%' },
-  { course: 'Calculus I', grade: '95', attendance: '100%' },
-  { course: 'English Composition', grade: '85', attendance: '92%' },
+  { studentId: '1', course: 'Intro to CS', grade: '92', attendance: '98%' },
+  { studentId: '1', course: 'World History', grade: '88', attendance: '95%' },
+  { studentId: '1', course: 'Calculus I', grade: '95', attendance: '100%' },
+  { studentId: '1', course: 'English Composition', grade: '85', attendance: '92%' },
+  { studentId: '4', course: 'Intro to CS', grade: '78', attendance: '91%' },
+  { studentId: '4', course: 'World History', grade: '82', attendance: '93%' },
+  { studentId: '5', course: 'Calculus I', grade: '88', attendance: '97%' },
+  { studentId: '5', course: 'English Composition', grade: '91', attendance: '99%' },
 ];
 
 export const announcements: Announcement[] = [

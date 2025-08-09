@@ -14,7 +14,8 @@ import {
   LayoutDashboard,
   Calendar,
   Wallet,
-  CalendarCheck
+  CalendarCheck,
+  BookMarked
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/auth-context';
@@ -34,6 +35,7 @@ const navItems: {
   { href: '/students', label: 'Students', icon: Users, roles: ['Admin'] },
   { href: '/academics', label: 'Academics', icon: School, roles: ['Admin'] },
   { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
+  { href: '/gradebook', label: 'Gradebook', icon: BookMarked, roles: ['Admin', 'Teacher'] },
   { href: '/policy-assistant', label: 'AI Policy Assistant', icon: Bot, roles: ['Student', 'Teacher', 'Admin'] },
 ];
 

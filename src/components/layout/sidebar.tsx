@@ -14,7 +14,8 @@ import {
   Package,
   Contact,
   School,
-  CalendarCheck
+  CalendarCheck,
+  BookMarked
 } from 'lucide-react';
 import {
   Sidebar,
@@ -44,6 +45,7 @@ const navItems: {
   { href: '/students', label: 'Students', icon: Users, roles: ['Admin'] },
   { href: '/academics', label: 'Academics', icon: School, roles: ['Admin'] },
   { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
+  { href: '/gradebook', label: 'Gradebook', icon: BookMarked, roles: ['Admin', 'Teacher'] },
 ];
 
 const AppSidebar = () => {
