@@ -1,6 +1,5 @@
 
 
-
 export type Course = {
   id: number;
   name: string;
@@ -98,3 +97,23 @@ export type AttendanceRecord = {
     date: string;
     status: AttendanceStatus;
 };
+
+export type FeeStatus = 'Paid' | 'Unpaid' | 'Overdue';
+
+export type Fee = {
+  id: string;
+  studentId: string;
+  description: string;
+  amount: number;
+  dueDate: string;
+  status: FeeStatus;
+};
+
+export type Payment = {
+    id: string;
+    feeId: string;
+    amount: number;
+    date: string;
+    method: 'Card' | 'Cash' | 'Bank Transfer';
+};
+

@@ -36,6 +36,7 @@ const navItems: {
   { href: '/academics', label: 'Academics', icon: School, roles: ['Admin'] },
   { href: '/attendance', label: 'Attendance', icon: CalendarCheck, roles: ['Admin', 'Teacher'] },
   { href: '/gradebook', label: 'Gradebook', icon: BookMarked, roles: ['Admin', 'Teacher'] },
+  { href: '/fees', label: 'Fees', icon: Wallet, roles: ['Admin'] },
   { href: '/policy-assistant', label: 'AI Policy Assistant', icon: Bot, roles: ['Student', 'Teacher', 'Admin'] },
 ];
 

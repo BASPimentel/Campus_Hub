@@ -1,5 +1,6 @@
 
-import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject, AcademicYear, Student, AttendanceRecord } from '@/types';
+
+import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject, AcademicYear, Student, AttendanceRecord, Fee, Payment } from '@/types';
 
 export const courses: Course[] = [
   {
@@ -231,4 +232,19 @@ export const attendanceRecords: AttendanceRecord[] = [
     { studentId: '1', studentName: 'John Doe', classId: 'G10-A', date: '2024-10-26', status: 'present' },
     { studentId: '5', studentName: 'Michael Brown', classId: 'G10-A', date: '2024-10-26', status: 'absent' },
     { studentId: '4', studentName: 'Emily White', classId: 'G9-B', date: '2024-10-26', status: 'present' },
+];
+
+export const fees: Fee[] = [
+    { id: 'fee1', studentId: '1', description: 'Tuition Fee - Fall 2024', amount: 5000, dueDate: '2024-09-01', status: 'Paid' },
+    { id: 'fee2', studentId: '1', description: 'Library Fee', amount: 50, dueDate: '2024-09-01', status: 'Paid' },
+    { id: 'fee3', studentId: '1', description: 'Lab Fee - Chemistry', amount: 150, dueDate: '2024-09-15', status: 'Unpaid' },
+    { id: 'fee4', studentId: '4', description: 'Tuition Fee - Fall 2024', amount: 5000, dueDate: '2024-09-01', status: 'Unpaid' },
+    { id: 'fee5', studentId: '4', description: 'Art Supplies Fee', amount: 200, dueDate: '2024-09-15', status: 'Overdue' },
+    { id: 'fee6', studentId: '5', description: 'Tuition Fee - Fall 2024', amount: 5000, dueDate: '2024-09-01', status: 'Paid' },
+];
+
+export const payments: Payment[] = [
+    { id: 'pay1', feeId: 'fee1', amount: 5000, date: '2024-08-25', method: 'Bank Transfer' },
+    { id: 'pay2', feeId: 'fee2', amount: 50, date: '2024-08-25', method: 'Card' },
+    { id: 'pay3', feeId: 'fee6', amount: 5000, date: '2024-08-30', method: 'Card' },
 ];
