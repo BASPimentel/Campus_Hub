@@ -1,5 +1,6 @@
+
 import Link from "next/link";
-import { PlusCircle, MoreHorizontal, Eye, Edit, Trash2 } from "lucide-react";
+import { PlusCircle, MoreHorizontal, Eye, Edit, Trash2, Search } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -16,47 +17,51 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { users } from "@/lib/placeholder-data";
-import { Badge } from "@/components/ui/badge";
+import { students } from "@/lib/placeholder-data";
+import { Input } from "@/components/ui/input";
 
-export default function UsersPage() {
+export default function StudentsPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">User Management</h1>
-          <p className="text-muted-foreground">Manage all users in the system.</p>
+          <h1 className="text-3xl font-bold">Student Management</h1>
+          <p className="text-muted-foreground">Manage all students in the system.</p>
         </div>
         <Button asChild>
-          <Link href="/users/add">
-            <PlusCircle className="mr-2 h-4 w-4" /> Add User
+          <Link href="/students/add">
+            <PlusCircle className="mr-2 h-4 w-4" /> Add Student
           </Link>
         </Button>
       </div>
-
+      
       <Card>
         <CardHeader>
-          <CardTitle>User List</CardTitle>
-          <CardDescription>A list of all users in the system.</CardDescription>
+          <CardTitle>Student List</CardTitle>
+          <CardDescription>A list of all students currently enrolled.</CardDescription>
         </CardHeader>
         <CardContent>
+            <div className="mb-4">
+                 <div className="relative">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input placeholder="Search students..." className="pl-8" />
+                </div>
+            </div>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Role</TableHead>
+                <TableHead>Major</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {users.map((user) => (
-                <TableRow key={user.id}>
-                  <TableCell className="font-medium">{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>
-                    <Badge variant={user.role === 'Admin' ? 'destructive' : 'secondary'}>{user.role}</Badge>
-                  </TableCell>
+              {students.map((student) => (
+                <TableRow key={student.id}>
+                  <TableCell className="font-medium">{student.name}</TableCell>
+                  <TableCell>{student.email}</TableCell>
+                   <TableCell>{student.major}</TableCell>
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -67,10 +72,10 @@ export default function UsersPage() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem asChild>
-                           <Link href={`/users/${user.id}`}><Eye className="mr-2 h-4 w-4" />View Details</Link>
+                           <Link href={`/students/${student.id}`}><Eye className="mr-2 h-4 w-4" />View Details</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                           <Link href={`/users/${user.id}/edit`}><Edit className="mr-2 h-4 w-4" />Edit</Link>
+                           <Link href={`/students/${student.id}/edit`}><Edit className="mr-2 h-4 w-4" />Edit</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem className="text-destructive">
                            <Trash2 className="mr-2 h-4 w-4" />Delete

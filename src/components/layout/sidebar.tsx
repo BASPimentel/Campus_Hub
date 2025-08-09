@@ -34,7 +34,7 @@ const navItems = [
   { href: '/announcements', label: 'Announcements', icon: Megaphone },
   { href: '/messages', label: 'Messages', icon: MessageSquare },
   { href: '/contacts', label: 'Contacts', icon: Contact },
-  { href: '/users', label: 'Users', icon: Users, adminOnly: true },
+  { href: '/students', label: 'Students', icon: Users, adminOnly: true },
   { href: '/academics', label: 'Academics', icon: School, adminOnly: true },
 ];
 

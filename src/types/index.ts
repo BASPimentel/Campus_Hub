@@ -54,6 +54,17 @@ export type User = {
     major?: string; // Optional, as it may not apply to all roles
 };
 
+export type Student = User & {
+    role: 'Student';
+    dateOfBirth: string;
+    address: string;
+    guardianName: string;
+    guardianPhone: string;
+    classId: string;
+    major: string;
+};
+
+
 export type Subject = {
   id: string;
   name: string;
@@ -74,3 +85,4 @@ export type AcademicYear = {
   endDate: string;
   terms: Term[];
 };
+
