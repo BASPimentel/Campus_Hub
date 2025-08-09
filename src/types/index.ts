@@ -1,3 +1,4 @@
+
 export type Course = {
   id: number;
   name: string;
@@ -51,4 +52,10 @@ export type User = {
     email: string;
     role: UserRole;
     major?: string; // Optional, as it may not apply to all roles
+};
+
+export type Subject = {
+  id: string;
+  name: string;
+  code: string;
 };

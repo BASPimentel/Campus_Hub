@@ -12,7 +12,8 @@ import {
   Users,
   Bot,
   Package,
-  Contact
+  Contact,
+  School
 } from 'lucide-react';
 import {
   Sidebar,
@@ -34,6 +35,7 @@ const navItems = [
   { href: '/messages', label: 'Messages', icon: MessageSquare },
   { href: '/contacts', label: 'Contacts', icon: Contact },
   { href: '/users', label: 'Users', icon: Users, adminOnly: true },
+  { href: '/academics', label: 'Academics', icon: School, adminOnly: true },
 ];
 
 const AppSidebar = () => {

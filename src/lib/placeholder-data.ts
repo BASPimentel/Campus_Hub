@@ -1,4 +1,5 @@
-import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User } from '@/types';
+
+import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject } from '@/types';
 
 export const courses: Course[] = [
   {
@@ -146,3 +147,10 @@ export const users: User[] = [
 ];
 
 export const students = users.filter(u => u.role === 'Student');
+
+export let subjects: Subject[] = [
+  { id: '1', name: 'Mathematics', code: 'MATH' },
+  { id: '2', name: 'Science', code: 'SCI' },
+  { id: '3', name: 'History', code: 'HIST' },
+  { id: '4', name: 'English', code: 'ENGL' },
+];
