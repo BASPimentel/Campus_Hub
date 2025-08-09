@@ -1,5 +1,5 @@
 
-import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject } from '@/types';
+import type { Course, Grade, Announcement, MessageContact, ChatMessage, DepartmentContact, User, Subject, AcademicYear } from '@/types';
 
 export const courses: Course[] = [
   {
@@ -153,4 +153,27 @@ export let subjects: Subject[] = [
   { id: '2', name: 'Science', code: 'SCI' },
   { id: '3', name: 'History', code: 'HIST' },
   { id: '4', name: 'English', code: 'ENGL' },
+];
+
+export let academicYears: AcademicYear[] = [
+    {
+        id: '1',
+        year: '2023-2024',
+        startDate: '2023-09-01',
+        endDate: '2024-06-15',
+        terms: [
+            { id: 't1', name: 'Fall 2023', startDate: '2023-09-01', endDate: '2023-12-20' },
+            { id: 't2', name: 'Spring 2024', startDate: '2024-01-10', endDate: '2024-06-15' },
+        ]
+    },
+     {
+        id: '2',
+        year: '2024-2025',
+        startDate: '2024-09-01',
+        endDate: '2025-06-15',
+        terms: [
+            { id: 't3', name: 'Fall 2024', startDate: '2024-09-01', endDate: '2024-12-20' },
+            { id: 't4', name: 'Spring 2025', startDate: '2025-01-10', endDate: '2025-06-15' },
+        ]
+    }
 ];

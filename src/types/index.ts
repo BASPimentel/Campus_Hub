@@ -59,3 +59,18 @@ export type Subject = {
   name: string;
   code: string;
 };
+
+export type Term = {
+  id: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+};
+
+export type AcademicYear = {
+  id: string;
+  year: string; // e.g., '2024-2025'
+  startDate: string;
+  endDate: string;
+  terms: Term[];
+};

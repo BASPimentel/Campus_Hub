@@ -16,9 +16,9 @@ const academicFeatures = [
         title: "Academic Year Setup",
         description: "Configure school years, terms, and semesters.",
         icon: Calendar,
-        href: "#",
-        cta: "Coming Soon",
-        disabled: true
+        href: "/academics/years",
+        cta: "Setup Years",
+        disabled: false
     },
     {
         title: "Grade Levels & Classes",
